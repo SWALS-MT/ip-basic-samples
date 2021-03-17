@@ -1,6 +1,11 @@
 import numpy as np
 import cv2
-import depth_map_utils as dutils
+import sys
+import os
+from ip_basic import depth_map_utils as dutils
+import pathlib
+from tqdm.contrib import tzip
+import datetime
 
 def one_image_completion(path, times=8):
     depth = cv2.imread(path, cv2.IMREAD_ANYDEPTH)
@@ -11,11 +16,7 @@ def one_image_completion(path, times=8):
 
     return depth_c
 
-if __name__ == '__main__':
-    import pathlib
-    from tqdm.contrib import tzip
-    import datetime
-
+def run_vis_completion():
     def concat_tile(im_list_2d):
         return cv2.vconcat([cv2.hconcat(im_list_h) for im_list_h in im_list_2d])
 
@@ -28,7 +29,7 @@ if __name__ == '__main__':
 
         return dst
 
-    dir_path = pathlib.Path('./sample_images/input')
+    dir_path = pathlib.Path('./sample_code/sample_images/input')
     dpaths = sorted(list(dir_path.glob('./*.png')))
     cpaths = sorted(list(dir_path.glob('./*.jpg')))
     print(dpaths)
@@ -51,6 +52,7 @@ if __name__ == '__main__':
     dt_str = dt_now.strftime('%Y-%m-%d-%H')
 
     vis_all = cv2.hconcat(vis_list)
-    cv2.imwrite('./sample_images/output/' + dt_str + '.png', vis_all)
+    cv2.imwrite('./sample_code/sample_images/output/' + dt_str + '.png', vis_all)
     cv2.imshow('vis all', vis_all)
     cv2.waitKey(0)
+    
