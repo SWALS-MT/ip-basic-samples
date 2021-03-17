@@ -2,6 +2,8 @@
 This repository is forked from https://github.com/kujason/ip_basic \
 I added a sample code for one image at a time. (./sample_code)
 
+![2021-03-17-16](https://user-images.githubusercontent.com/47411597/111439963-38308b80-8749-11eb-9ca3-465d4a112c0e.png)
+
 ## Image Processing for Basic Depth Completion (IP-Basic)
 Depth completion is the task of converting a sparse depth map D<sub>sparse</sub> into a dense depth map D<sub>dense</sub>. This algorithm was originally created to help visualize 3D object detection results for [AVOD](https://arxiv.org/abs/1712.02294).
 
